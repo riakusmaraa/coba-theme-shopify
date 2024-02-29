@@ -1,3 +1,5 @@
+{% assign nav_menu = [section.settings.nav_menu] %}
+
 <div class="relative bg-white" x-data="{ mobileMenuOpen: true }">
     <div class="mx-auto px-4 sm:px-6">
     <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
@@ -15,7 +17,7 @@
 
         <!-- NAVIGATION MENU -->
         <nav x-data="{ open: false }" class="hidden md:flex space-x-10">
-        {% for link in linklists.main-menu.links %}
+        {% for link in nav_menu %}
             {% if link.links != blank %}
                 <div class="relative">
                     <button x-on:click="open = ! open" type="button" class="text-base text-gray-500 hover:text-gray-900">
@@ -81,7 +83,7 @@
                 <!-- NAVIGATION LINKS FOR MOBILE MENU -->
                 <div class="pt-3">
                     <nav class="grid gap-y-7">
-                        {% for link in linklists.main-menu.links %}
+                        {% for link in nav_menu %}
                             {% assign link_handle = link.handle | replace: '-', '_' %}
                             {% if link.links != blank %}
                                 <div x-data="{ {{ link_handle }} : false}" class="relative">
@@ -122,6 +124,13 @@
                 "label":"Menu",
                 "default": "Menu",
                 "info": "This is title of the mobile menu window"
+            },
+            {
+                "type": "link_list",
+                "id":"nav_menu",
+                "label":"Nav Menu",
+                "default": "main-menu",
+                "info": "This is list of the nav menu"
             }
         ]
     }
