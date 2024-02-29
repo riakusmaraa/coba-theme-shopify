@@ -5,7 +5,7 @@
         "type": "header",
         "settings": {
           "mobile_menu_title": "Menu",
-          "nav_menu": "footer"
+          "nav_menu": "main-menu"
         }
       },
       "homepage": {
